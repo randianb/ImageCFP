@@ -1,0 +1,24 @@
+﻿<Application  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              
+             d1p1:Ignorable="d"
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:vm="clr-namespace:ImageCFP.ViewModel" 
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+        <!--Global View Model Locator-->
+        <vm:ViewModelLocator x:Key="Locator"
+                             d:IsDataSource="True" 
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"/>
+    
+    
+        <ResourceDictionary.MergedDictionaries>
+            <!-- DiagramDesigner Dll resources, you need all of these -->
+                <ResourceDictionary Source="pack://application:,,,/ImageCFP;component/Skins/EN-US.xaml"/>
+                <!--<ResourceDictionary Source="pack://application:,,,/ImageCFP;component/Skins/ZH-CN.xaml"/>-->   
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+    </Application.Resources>
+</Application>

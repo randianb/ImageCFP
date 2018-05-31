@@ -1,0 +1,97 @@
+﻿<Window x:Class="ImageCFP.ProcessWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:im="clr-namespace:ImageCFP"
+        xmlns:vm="clr-namespace:ImageCFP.ViewModel"
+        Title="ProcessWindow" Height="500" Width="500" WindowStyle="None">
+        <!--DataContext="{Binding Source={StaticResource Locator}, Path=ImageInfo}">-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" MouseLeftButtonDown="OnMouseLeftButtonDown">
+            <DockPanel.Background>
+                <LinearGradientBrush  EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="MediumBlue" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="0"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+            <Label x:Name="tileLabel" Content="{Binding ImageName}" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontSize="16" Opacity="0.8"/>
+            <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Right" Width="100" Orientation="Horizontal">
+                <Button  Style="{DynamicResource minimizeButton}" Width="20"
+                 VerticalAlignment ="Bottom"
+                Click="minimizeButton_Click" ToolTip="{DynamicResource Minimize}"/>
+
+                <!--最大化按钮，允许用户单击该按钮最大化窗体-->
+                <Button  Style="{DynamicResource maximizeButton}"  Width="20"  Margin="10,0,10,0"
+                 VerticalAlignment ="Bottom"
+                Click="maximizeButton_Click" ToolTip="{DynamicResource Maximize}"/>
+                <!--最小化按钮，允许用户单击该按钮最小化窗体-->
+                <Button  Style="{DynamicResource closeButton}"   Width="20" 
+                VerticalAlignment ="Bottom"
+                Click="closeButton_Click" ToolTip="{DynamicResource Close}"/>
+            </StackPanel>
+        </DockPanel>
+        <Grid>
+            <xcad:DockingManager>
+                <xcad:LayoutRoot>
+                    <xcad:LayoutPanel Orientation="Horizontal">
+                        <xcad:LayoutAnchorablePaneGroup>
+                            <xcad:LayoutAnchorablePane>
+                                <xcad:LayoutAnchorable x:Name="LaplasSharpSetting" Title="Laplas Sharp" CanClose="False" FloatingLeft="300" FloatingTop="300" FloatingWidth="300" FloatingHeight="300">
+                                    <im:LaplasSharpPanel/>
+                                </xcad:LayoutAnchorable>
+                            </xcad:LayoutAnchorablePane>
+                        </xcad:LayoutAnchorablePaneGroup>
+                    </xcad:LayoutPanel>
+                </xcad:LayoutRoot>
+            </xcad:DockingManager>
+        </Grid>
+        <Menu Grid.Row="1">
+            <!--<MenuItem Header="_Flie">
+                <MenuItem Header="_Open..."/>
+                <MenuItem Header="_Save..."/>
+                <Separator/>
+                <MenuItem Header="_Load HeightMap"/>
+            </MenuItem>-->
+            <MenuItem Header="{DynamicResource Edit}">
+                <MenuItem Header="{DynamicResource Undo}"/>
+                <MenuItem Header="{DynamicResource Invert}"/>
+                <MenuItem Header="{DynamicResource Clear}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Image}">
+                <MenuItem Header="{DynamicResource Type}">
+                    <MenuItem Header="8 bit"/>
+                    <MenuItem Header="RGB"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Process}">
+                <MenuItem Header="{DynamicResource Filter}">
+                    <MenuItem Header="{DynamicResource Gaussian}"/>
+                    <MenuItem Header="{DynamicResource Median}"/>
+                    <Separator/>
+                    <MenuItem Header="{DynamicResource Sobel}"/>
+                    <MenuItem Header="{DynamicResource Laplace}" Command="{Binding ShowConfigCmd}" CommandParameter="{x:Static vm:ConfigPanelType.Panel_LaplasSharp}"/>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Hydrology}">
+                    <MenuItem Header="{DynamicResource FindMaximum}"/>
+                    <MenuItem Header="{DynamicResource FindMinimum}"/>
+                    <MenuItem Header="{DynamicResource WatershedWithROI}"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <!--<im:ProcessBar Grid.Row="1"/>-->
+        <Image Grid.Row="2" Source="{Binding ImgSource}"/>
+    </Grid>
+</Window>

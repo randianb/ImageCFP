@@ -1,0 +1,47 @@
+﻿<Window x:Class="ImageCFP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:im="clr-namespace:ImageCFP.ViewModel"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        Height="300"
+        Width="500"
+        Title="ImageCFP"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <!--<RowDefinition Height="40"/>-->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            <Menu Grid.Row="0">
+            <MenuItem Header="{DynamicResource Flie}">
+                <MenuItem Header="{DynamicResource Open}" Command="{Binding LoadImageCommand}"/>
+                <MenuItem Header="{DynamicResource Save}" Command="{Binding SaveImageCommand}"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource LoadHeightMap}" Command="{Binding LoadHeightDatCommand}"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Grid.Row="0" Width="150" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Label x:Name="ENLable" Content="English" Width="50" HorizontalContentAlignment="Center" MouseLeftButtonDown="EnglishButtonClick" Background="Transparent" Foreground="Black"/>
+            <Label Content="|" Width="20" HorizontalContentAlignment="Center" Background="Transparent" Foreground="Black"/>
+            <Label x:Name="CHLable" Content="中文" Width="50" HorizontalContentAlignment="Center" MouseLeftButtonDown="ChineseButtonClick" Background="Transparent" Foreground="White"/>
+        </StackPanel>
+        <!--<im:ProcessBar Grid.Row="1"/>-->
+        <DockPanel Grid.Row="1">
+            <RichTextBox DockPanel.Dock="Left" x:Name="loggingBox" Margin="3" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" IsDocumentEnabled="False" IsReadOnly="True" VerticalScrollBarVisibility="Auto" >
+            </RichTextBox>
+        </DockPanel>
+    </Grid>
+</Window>

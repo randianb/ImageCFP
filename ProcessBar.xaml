@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ImageCFP.ProcessBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="400"
+              DataContext="{Binding Source={StaticResource Locator}, Path=ImageInfo}">
+    <Grid>
+        <Menu>
+            <!--<MenuItem Header="_Flie">
+                <MenuItem Header="_Open..."/>
+                <MenuItem Header="_Save..."/>
+                <Separator/>
+                <MenuItem Header="_Load HeightMap"/>
+            </MenuItem>-->
+            <MenuItem Header="_Edit">
+                <MenuItem Header="Undo"/>
+                <MenuItem Header="Invert"/>
+                <MenuItem Header="Clear"/>
+            </MenuItem>
+            <MenuItem Header="_Image">
+                <MenuItem Header="_Type">
+                    <MenuItem Header="8 bit"/>
+                    <MenuItem Header="RGB"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Process">
+                <MenuItem Header="Filter">
+                    <MenuItem Header="Gaussian"/>
+                    <MenuItem Header="Median"/>
+                    <Separator/>
+                    <MenuItem Header="Sobel"/>
+                    <MenuItem Header="Laplace"/>
+                </MenuItem>
+                <MenuItem Header="Hydrology">
+                    <MenuItem Header="Find Maximum"/>
+                    <MenuItem Header="Find Minimum"/>
+                    <MenuItem Header="Watershed With ROI"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</UserControl>

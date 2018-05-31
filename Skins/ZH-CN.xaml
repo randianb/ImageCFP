@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <s:String x:Key="Minimize">最小化</s:String>
+    <s:String x:Key="Maximize">最大化</s:String>
+    <s:String x:Key="Close">关闭</s:String>
+    <s:String x:Key="Preview">预览</s:String>
+    <s:String x:Key="OK">确认</s:String>
+    <s:String x:Key="Cancel">取消</s:String>
+    <s:String x:Key="Flie">_文件</s:String>
+    <s:String x:Key="Open">_打开...</s:String>
+    <s:String x:Key="Save">_保存...</s:String>
+    <s:String x:Key="LoadHeightMap">_打开高度图</s:String>
+
+    <s:String x:Key="LaplasSharp">拉普拉斯锐化</s:String>
+    <s:String x:Key="Modeltemplate">模式(模板)</s:String>
+    <s:String x:Key="Edit">_编辑</s:String>
+    <s:String x:Key="Undo">撤销</s:String>
+    <s:String x:Key="Invert">反色</s:String>
+    <s:String x:Key="Clear">清除</s:String>
+    <s:String x:Key="Image">_图像</s:String>
+    <s:String x:Key="Type">_类型</s:String>
+    <s:String x:Key="Process">处理</s:String>
+    <s:String x:Key="Filter">滤波</s:String>
+    <s:String x:Key="Gaussian">高斯</s:String>
+    <s:String x:Key="Median">中值</s:String>
+    <s:String x:Key="Sobel">Sobel算子</s:String>
+    <s:String x:Key="Laplace">拉普拉斯</s:String>
+    <s:String x:Key="Hydrology">纹理</s:String>
+    <s:String x:Key="FindMaximum">极大值</s:String>
+    <s:String x:Key="FindMinimum">极小值</s:String>
+    <s:String x:Key="WatershedWithROI">ROI分水岭</s:String>
+</ResourceDictionary>
